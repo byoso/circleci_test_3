@@ -36,14 +36,19 @@ jobs:
       - run:
           name: update pip
           command: python3 -m pip install -U pip
-      
+
       - run:
           name: install dependencies
           command: pip install -r requirements.txt
+
+      - run:
+          name: linter flake8
+          command: flake8 -v
+
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
-          command: pytest
+          command: pytest -v
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
